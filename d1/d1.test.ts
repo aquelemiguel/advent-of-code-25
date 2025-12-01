@@ -1,9 +1,8 @@
 import { p1, p2, parseInput } from "./d1.ts";
 import { assertEquals } from "@std/assert";
-import { join } from "@std/path";
 
-const exfile = Deno.readTextFileSync(join(import.meta.dirname!, "ex.txt"));
-const infile = Deno.readTextFileSync(join(import.meta.dirname!, "in.txt"));
+const exfile = Deno.readTextFileSync("./d1/ex.txt");
+const infile = Deno.readTextFileSync("./d1/in.txt");
 
 Deno.test("p1", () => {
   assertEquals(p1(parseInput(exfile)), 3);
