@@ -1,5 +1,5 @@
 import { p1, p2, parseInput } from "./d1.ts";
-import { assertEquals } from "jsr:@std/assert";
+import { assertEquals } from "@std/assert";
 
 const exfile = Deno.readTextFileSync("./d1/ex.txt");
 const infile = Deno.readTextFileSync("./d1/in.txt");
