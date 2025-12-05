@@ -1,4 +1,4 @@
-export function p1(ranges: number[][]): number {
+function p1(ranges: number[][]): number {
   let res = 0;
 
   for (const [l, r] of ranges) {
@@ -17,7 +17,7 @@ export function p1(ranges: number[][]): number {
   return res;
 }
 
-export function p2(ranges: number[][]): number {
+function p2(ranges: number[][]): number {
   let res = 0;
 
   for (const [l, r] of ranges) {
@@ -40,6 +40,12 @@ export function p2(ranges: number[][]): number {
   return res;
 }
 
-export function parseInput(input: string) {
+function parseInput(input: string) {
   return input.split(",").map((r) => r.split("-").map(Number));
 }
+
+const f = Deno.readTextFileSync("./d2/example.txt");
+const input = parseInput(f);
+
+console.log("p1:", p1(input));
+console.log("p2:", p2(input));

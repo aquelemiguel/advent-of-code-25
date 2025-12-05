@@ -16,14 +16,20 @@ function getJoltage(s: string, k: number): number {
   return Number(res);
 }
 
-export function p1(banks: string[]): number {
+function p1(banks: string[]): number {
   return banks.reduce((acc, curr) => acc + getJoltage(curr, 2), 0);
 }
 
-export function p2(banks: string[]): number {
+function p2(banks: string[]): number {
   return banks.reduce((acc, curr) => acc + getJoltage(curr, 12), 0);
 }
 
-export function parseInput(input: string) {
+function parseInput(input: string) {
   return input.split("\n");
 }
+
+const f = Deno.readTextFileSync("./d3/example.txt");
+const input = parseInput(f);
+
+console.log("p1:", p1(input));
+console.log("p2:", p2(input));

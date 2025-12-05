@@ -1,4 +1,4 @@
-export function p1(input: [string, number][]) {
+function p1(input: [string, number][]) {
   let dial = 50;
   let res = 0;
 
@@ -16,7 +16,7 @@ export function p1(input: [string, number][]) {
   return res;
 }
 
-export function p2(input: [string, number][]) {
+function p2(input: [string, number][]) {
   let dial = 50;
   let res = 0;
 
@@ -40,8 +40,14 @@ export function p2(input: [string, number][]) {
   return res;
 }
 
-export function parseInput(input: string) {
+function parseInput(input: string) {
   return input
     .split("\n")
     .map((r): [string, number] => [r[0], Number(r.slice(1))]);
 }
+
+const f = Deno.readTextFileSync("./d1/example.txt");
+const input = parseInput(f);
+
+console.log("p1:", p1(input));
+console.log("p2:", p2(input));

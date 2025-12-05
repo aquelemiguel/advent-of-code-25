@@ -3,9 +3,14 @@ function isAccessible(grid: string[][], cx: number, cy: number) {
     return false;
   }
   const dirs = [
-    [-1, -1], [0, -1], [1, -1],
-    [-1,  0],          [1,  0],
-    [-1,  1], [0,  1], [1,  1],
+    [-1, -1],
+    [0, -1],
+    [1, -1],
+    [-1, 0],
+    [1, 0],
+    [-1, 1],
+    [0, 1],
+    [1, 1],
   ];
 
   let adj = 0;
@@ -14,8 +19,10 @@ function isAccessible(grid: string[][], cx: number, cy: number) {
     const ny = cy + dy;
 
     if (
-      nx >= 0 && nx < grid.length &&
-      ny >= 0 && ny < grid[0].length &&
+      nx >= 0 &&
+      nx < grid.length &&
+      ny >= 0 &&
+      ny < grid[0].length &&
       grid[nx][ny] === "@"
     ) {
       adj++;
@@ -24,7 +31,7 @@ function isAccessible(grid: string[][], cx: number, cy: number) {
   return adj < 4;
 }
 
-function forklift(grid: string[][], options: {single: boolean}) {
+function forklift(grid: string[][], options: { single: boolean }) {
   let removed = 0;
 
   while (true) {
@@ -41,19 +48,25 @@ function forklift(grid: string[][], options: {single: boolean}) {
       return removed;
     }
     for (const [x, y] of pass) {
-      grid[x][y] = '.';
+      grid[x][y] = ".";
     }
   }
 }
 
-export function p1(grid: string[][]): number {
+function p1(grid: string[][]): number {
   return forklift(grid, { single: true });
 }
 
-export function p2(grid: string[][]): number {
+function p2(grid: string[][]): number {
   return forklift(grid, { single: false });
 }
 
-export function parseInput(input: string) {
+function parseInput(input: string) {
   return input.split("\n").map((l) => l.split(""));
 }
+
+const f = Deno.readTextFileSync("./d4/example.txt");
+const input = parseInput(f);
+
+console.log("p1:", p1(input));
+console.log("p2:", p2(input));
